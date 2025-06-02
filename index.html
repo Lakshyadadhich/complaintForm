@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complaint Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      /* Background image with overlay */
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dark overlay to soften background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1; /* Make sure form is above overlay */
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #f0f0f0;
+    }
+
+    input[type="text"],
+    textarea,
+    select,
+    input[type="email"] {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      padding: 8px;
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    select:focus,
+    input[type="email"]:focus {
+      border-bottom: 2px solid #00e0ff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: #00bcd4;
+    }
+
+    .thank-you {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #d4ffd4;
+      font-weight: bold;
+    }
+
+    #reason{
+        color: #000;
+    }
+  </style>
+  <script>
+    function showThankYou() {
+      document.getElementById('thankYouMessage').style.display = 'block';
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+<form id="complaintForm" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DgK000004KER8" method="POST" onsubmit="return showThankYou()">
+  <input type="hidden" name="orgid" value="00DgK000004KER8" />
+  <input type="hidden" name="retURL" value="http://crowenCrest.com" />
+
+  <h2>Complaint Form</h2>
+
+  <label for="name">Contact Name</label>
+  <input id="name" name="name" maxlength="80" type="text" required />
+
+  <label for="email">Email</label>
+  <input id="email" name="email" maxlength="80" type="email" required />
+
+  <label for="description">Description</label>
+  <textarea id="description" name="description" required></textarea>
+
+  <label for="reason">Case Reason</label>
+  <select id="reason" name="reason" required>
+    <option value="">--None--</option>
+    <option value="Installation">Installation</option>
+    <option value="Equipment Complexity">Equipment Complexity</option>
+    <option value="Performance">Performance</option>
+    <option value="Breakdown">Breakdown</option>
+    <option value="Equipment Design">Equipment Design</option>
+ 
+    <option value="Other">Other</option>
+  </select>
+
+  <label for="bookingId">Booking ID</label>
+  <input id="bookingId" name="00NgK000012dRt7" maxlength="20" type="text" required />
+
+  <div id="thankYouMessage" class="thank-you">Your complaint is being submitted. Thank you for your feedback!</div>
+
+  <input type="submit" value="Submit Complaint" />
+</form>
+
+</body>
+</html>
