@@ -14,7 +14,6 @@
     }
 
     body {
-      /* Background image with overlay */
       background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
       background-size: cover;
       height: 100vh;
@@ -25,7 +24,6 @@
       overflow: hidden;
     }
 
-    /* Dark overlay to soften background */
     body::before {
       content: "";
       position: absolute;
@@ -44,7 +42,7 @@
       color: #fff;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       position: relative;
-      z-index: 1; /* Make sure form is above overlay */
+      z-index: 1;
     }
 
     h2 {
@@ -83,6 +81,11 @@
       border-bottom: 2px solid #00e0ff;
     }
 
+    select {
+      background-color: rgba(255, 255, 255, 0.85);
+      color: #000;
+    }
+
     textarea {
       resize: vertical;
       min-height: 80px;
@@ -113,10 +116,6 @@
       color: #d4ffd4;
       font-weight: bold;
     }
-
-    #reason{
-        color: #000;
-    }
   </style>
   <script>
     function showThankYou() {
@@ -127,7 +126,11 @@
 </head>
 <body>
 
-<form id="complaintForm" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DgK000004KER8" method="POST" onsubmit="return showThankYou()">
+<form id="complaintForm" 
+  action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DgK000004KER8" 
+  method="POST" 
+  onsubmit="return showThankYou()">
+
   <input type="hidden" name="orgid" value="00DgK000004KER8" />
   <input type="hidden" name="retURL" value="http://crowenCrest.com" />
 
@@ -150,7 +153,7 @@
     <option value="Performance">Performance</option>
     <option value="Breakdown">Breakdown</option>
     <option value="Equipment Design">Equipment Design</option>
- 
+    <option value="Feedback">Feedback</option>
     <option value="Other">Other</option>
   </select>
 
